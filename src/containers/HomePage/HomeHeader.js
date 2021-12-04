@@ -11,7 +11,7 @@ class HomeHeader extends Component {
                 <div className = "home-header-container">
                     <div className = "home-header-content">
                         <div className = "left-content">
-                                <i className = "fas fa-bars"></i>
+                                {/* <i className = "fas fa-bars"></i> */}
                                 <div className = "header-logo">
 
                                 </div>
@@ -29,6 +29,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
+                {this.props.isShowBanner === true &&
                 <div className = "home-header-banner">
                         <div className = "content-up">
                         <div className = "title1">The Best transportation of all time</div>
@@ -67,6 +68,7 @@ class HomeHeader extends Component {
                     </div>
                     </div>
                 </div>
+    }
             </React.Fragment>
         );
     }

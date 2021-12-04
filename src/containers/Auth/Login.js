@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-import { handleLoginApi } from '../../services/userService';
+// import { handleLoginApi } from '../../services/userService';
 
 
 class Login extends Component {
@@ -32,33 +32,32 @@ class Login extends Component {
         })
     }
 
-    handleLogin = async () => {
-        this.setState({
-            errMessage: '',
-        })
-        try {
-           let data =  await handleLoginApi(this.state.username, this.state.password);
-           if(data && data.errCode !==0) {
-               this.setState({
-                   errMessage: data.message
-               })
-           }
-           if(data && data.errCode == 0) {
-                this.props.userLoginSuccess(data.user) 
-               console.log('login succeed');
-           }
+    // handleLogin = async () => {
+    //     this.setState({
+    //         errMessage: '',
+    //     })
+    //     try {
+    //        let data =  await handleLoginApi(this.state.username, this.state.password);
+    //        if(data && data.errCode !==0) {
+    //            this.setState({
+    //                errMessage: data.message
+    //            })
+    //        }
+    //        if(data && data.errCode == 0) {
+    //             this.props.userLoginSuccess(data.user) 
+    //            console.log('login succeed');
+    //        }
 
-        }catch(error) {
-            if(error.response) {
-                if(error.response.data){
-                    this.setState({
-                        errMessage: error.response.data.message
-                    })
-                }
-            }
-            console.log('a', error.response);
-        } 
-    }
+    //     }catch(error) {
+    //         if(error.response) {
+    //             if(error.response.data){
+    //                 this.setState({
+    //                     errMessage: error.response.data.message
+    //                 })
+    //             }
+    //         }
+    //     } 
+    // }
 
     handleShowHidePassword = () => {
         this.setState({
@@ -105,7 +104,7 @@ class Login extends Component {
                         </div>
                         <div className = "col-12">
                             <button className = "login-btn"
-                            onClick = {() => {this.handleLogin()}}
+                           /* onClick = {() => {this.handleLogin()}} */
                             >
                                 Login</button>
                         </div>

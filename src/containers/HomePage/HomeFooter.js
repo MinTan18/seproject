@@ -8,12 +8,14 @@ class HomeFooter extends Component {
     render() {
 
         return (
+            
             <div className = "home-footer">
                 <p>&copy; 2021 From Group 11. More information, please contact us
                     <a target = "_blank" href="https://www.facebook.com/"> 
                     &#8594; Click
                     </a>
                 </p>
+                
             </div>
         )
             

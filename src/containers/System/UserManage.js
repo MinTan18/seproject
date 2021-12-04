@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import {getAllUsers} from '../../services/userService';
+// import {getAllUsers} from '../../services/userService';
 class UserManage extends Component {
 
     constructor(props) {
@@ -12,14 +12,14 @@ class UserManage extends Component {
         }
     }
 
-    async componentDidMount() {
-        let response = await getAllUsers('All');
-        if(response && response.errCode ===0) {
-            this.setState({
-                arrUsers: response.users
-            }) 
-        }
-    }
+    // async componentDidMount() {
+    //     let response = await getAllUsers('All');
+    //     if(response && response.errCode ===0) {
+    //         this.setState({
+    //             arrUsers: response.users
+    //         }) 
+    //     }
+    // }
 
     handleAddNewUser = () => {
 
