@@ -34,10 +34,10 @@ class HomeHeader extends Component {
                         <div className = "content-up">
                         <div className = "title1">The Best transportation of all time</div>
                         <div className = "title2">More friendly than your bike </div>
-                        <div className = "search">
+                        {/* <div className = "search">
                             <i className = "fas fa-search"></i>
                             <input type = "text" placeholder = "Search your destination" />
-                        </div>
+                        </div> */}
                     </div>
                     <div className = "content-down">
                     <div className = "option">
