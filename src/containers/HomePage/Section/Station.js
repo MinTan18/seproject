@@ -6,6 +6,10 @@ import Slider from 'react-slick';
 import * as actions from '../../../store/actions'
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import stationImg1 from "../../../assets/stationimg/station1.jpg"
+import stationImg2 from "../../../assets/stationimg/station2.jpg"
+import stationImg3 from "../../../assets/stationimg/station3.jpg"
+import stationImg4 from "../../../assets/stationimg/station4.jpg"
 
 
 class Station extends Component {
@@ -14,7 +18,13 @@ class Station extends Component {
     HandleViewTrainDetail = (station) => {
         console.log("detail is: ", station );
         this.props.history.push(`/station-detail/`)
-        // return <Redirect to = "/user" push={true} />
+        return <Redirect to = "/user" push={true} />
+    }
+
+    HandleViewTrainDetail1 = (station) => {
+        console.log("detail is: ", station );
+        this.props.history.push(`/station-detail1/`)
+        return <Redirect to = "/user" push={true} />
     }
 
     componentDidMount() {
@@ -35,34 +45,32 @@ class Station extends Component {
                     <Slider {...this.props.settings}>
                 
                 <div className = "station-customize" onClick ={(item) => this.HandleViewTrainDetail(item)}>
-                        <div className = "bg-image station-img" />
+                        <div className = "bg-image1 station-img" />
                         <div className = "position text-center">
-                        <div className = "position text-center">
-                        <div>SaiGon Station </div>
+                        <div>Sai Gon Station </div>
                         
-                        </div>
                         </div>
 
                 </div>
                 
-                <div className = "station-customize" onClick ={(item) => this.HandleViewTrainDetail(item)}>
-                     <div className = "bg-image station-img" />
+                <div className = "station-customize" onClick ={(item) => this.HandleViewTrainDetail1(item)}>
+                     <div className = "bg-image2 station-img" />
                      <div className = "position text-center">
-                        <div>BienHoa Station </div>
+                        <div>Bien Hoa Station </div>
                         
                         </div>
                 </div>
                 <div className = "station-customize" onClick ={(item) => this.HandleViewTrainDetail(item)}>
-                     <div className = "bg-image station-img" />
+                     <div className = "bg-image3 station-img" />
                      <div className = "position text-center">
-                        <div>HaiPhong Station </div>
+                        <div>Hai Phong Station </div>
                         
                         </div>
                 </div>
                 <div className = "station-customize" onClick ={(item) => this.HandleViewTrainDetail(item)}>
-                     <div className = "bg-image station-img" />
+                     <div className = "bg-image4 station-img" />
                      <div className = "position text-center">
-                        <div>HaNoi Station </div>
+                        <div>Ha Noi Station </div>
                         
                         </div>
 

@@ -4,7 +4,9 @@ export const path = {
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
-    DETAIL_STATION: '/station-detail'
+    DETAIL_STATION: '/station-detail',
+    DETAIL_STATION1: '/station-detail1',
+    USER_MANAGE: '/system/user-redux',
 };
 
 export const languages = {

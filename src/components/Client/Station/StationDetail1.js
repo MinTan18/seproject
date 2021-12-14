@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import HomeHeader from '../../../containers/HomePage/HomeHeader';
-import './StationDetail.scss';
-import Detail1 from "../../../assets/stationimg/station1.jpg";
+import './StationDetail1.scss';
+import Detail2 from "../../../assets/stationimg/station2.jpg";
 import DatePicker from '../../../components/Input/DatePicker';
 
-class StationDetail extends Component {
+class StationDetail1 extends Component {
 
      constructor(props) {
         super(props);
@@ -24,10 +24,6 @@ class StationDetail extends Component {
         this.setState({
             isShowTicket: status
         })
-    }
-
-    handleOnBuyTicket = () => {
-        alert('Successful, be save and enjoy you trip!')
     }
 
     // handleShowButton = () => {
@@ -60,7 +56,6 @@ class StationDetail extends Component {
                <HomeHeader 
                 isShowBanner = {false}
                />
-              
                <div className = "station-detail-container">
                   <div className = "intro-station">
                       <div className = "content-left">
@@ -72,17 +67,17 @@ class StationDetail extends Component {
                     
                           <div className = "down">
                               <div className='up-content'>
-                                  SaiGon Station
+                                  Bien Hoa Station
                               </div>
                               <div className = "down-content">
-                                  Address: 1 Nguyen Thong Street District 3
+                                  Address: Hưng Đạo Vương, Thống Nhất, Biên Hòa, Đồng Nai
                               </div>
                               <div className = "down-working-hours">
                                   Working hours: 
                               </div>
                               <div className = "hours-content">
-                                  Monday-Friday: 7h30 - 22h30<br/>
-                                  Sunday: Allday
+                                  Monday-Friday: 6h30 - 23h30<br/>
+                                  Sunday: All
                               </div>
                               { isShowTicket === false && 
                                 <button 
@@ -106,7 +101,7 @@ class StationDetail extends Component {
                                 <i class="fas fa-train"></i>
                             </div>
                             <div className = "title-text">
-                            Sai Gon - Thanh Hoa
+                            Bien Hoa - Nha Trang
                              </div>
                              <div className = "title-time">
                             7:00 AM
@@ -117,18 +112,7 @@ class StationDetail extends Component {
                                 <i class="fas fa-train"></i>
                             </div>
                             <div className = "title-text">
-                            Sai Gon - Hai Phong
-                             </div>
-                             <div className = "title-time">
-                            7:00 AM
-                             </div>
-                        </div>
-                        <div className = "title-content">
-                            <div className = "title-icon">
-                                <i class="fas fa-train"></i>
-                            </div>
-                            <div className = "title-text">
-                            Sai Gon - Bien Hoa
+                            Bien Hoa - Quy Nhon
                              </div>
                              <div className = "title-time">
                             8:00 AM
@@ -139,7 +123,18 @@ class StationDetail extends Component {
                                 <i class="fas fa-train"></i>
                             </div>
                             <div className = "title-text">
-                            Sai Gon - Bac Lieu
+                            Bien Hoa - Sai Gon
+                             </div>
+                             <div className = "title-time">
+                            12:00 AM
+                             </div>
+                        </div>
+                        <div className = "title-content">
+                            <div className = "title-icon">
+                                <i class="fas fa-train"></i>
+                            </div>
+                            <div className = "title-text">
+                            Bien Hoa - Dac Nong
                              </div>
                              <div className = "title-time">
                             9:30 AM
@@ -150,10 +145,10 @@ class StationDetail extends Component {
                                 <i class="fas fa-train"></i>
                             </div>
                             <div className = "title-text">
-                            Sai Gon - Ha Noi
+                            Bien Hoa - Ha Noi
                              </div>
                              <div className = "title-time">
-                            2:00 PM
+                            5:00 PM
                              </div>
                         </div>
                         <div className = "title-content">
@@ -161,10 +156,10 @@ class StationDetail extends Component {
                                 <i class="fas fa-train"></i>
                             </div>
                             <div className = "title-text">
-                            Sai Gon - Nam Dinh
+                            Bien Hoa - Nam Dinh
                              </div>
                              <div className = "title-time">
-                            9:00 PM
+                            3:00 PM
                              </div>
                         </div>
                         <div className = "container">
@@ -202,9 +197,12 @@ class StationDetail extends Component {
                                 <label className = "ticket-label">Choose your travel</label>
                                 <select className = "form-control">
                                     <option select = "Choose..."></option>
-                                    <option>Sai Gon - Hai Phong</option>
-                                    <option>Sai Gon - Can Tho</option>
-                                    <option>Sai Gon - Soc Trang</option>
+                                    <option>Bien Hoa - Hai Phong</option>
+                                    <option>Bien Hoa - Can Tho</option>
+                                    <option>Bien Hoa - Soc Trang</option>
+                                    <option>Bien Hoa - Dong Nai</option>
+                                    <option>Bien Hoa - Sapa</option>
+                                    <option>Bien Hoa - Ha Noi</option>
                                 </select>
                                 <label>Time</label>
                                 <select className = "form-control">
@@ -214,6 +212,12 @@ class StationDetail extends Component {
                                     <option>9:00 AM</option>
                                     <option>10:00 AM</option>
                                     <option>11:00 AM</option>
+                                    <option>12:00 AM</option>
+                                    <option>13:00 PM</option>
+                                    <option>14:00 PM</option>
+                                    <option>15:00 PM</option>
+                                    <option>16:00 PM</option>
+                                    <option>17:00 PM</option>
                                 </select>
                                 <label>Tickets</label>
                                 <select className = "form-control">
@@ -241,9 +245,7 @@ class StationDetail extends Component {
                                     <div className = "right">
 
                                     </div>
-                                    <button className = "btn-ticket"
-                                    onClick={() => this.handleOnBuyTicket()}
-                                    >
+                                    <button className = "btn-ticket">
                                     Buy 
                                 </button>
                             </div>
@@ -286,4 +288,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StationDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(StationDetail1);

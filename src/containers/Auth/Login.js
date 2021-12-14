@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
+import { Redirect } from 'react-router-dom';
+
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-// import { handleLoginApi } from '../../services/userService';
+import { handleLoginApi } from '../../services/userService';
 
 
 class Login extends Component {
@@ -32,37 +34,52 @@ class Login extends Component {
         })
     }
 
-    // handleLogin = async () => {
-    //     this.setState({
-    //         errMessage: '',
-    //     })
-    //     try {
-    //        let data =  await handleLoginApi(this.state.username, this.state.password);
-    //        if(data && data.errCode !==0) {
-    //            this.setState({
-    //                errMessage: data.message
-    //            })
-    //        }
-    //        if(data && data.errCode == 0) {
-    //             this.props.userLoginSuccess(data.user) 
-    //            console.log('login succeed');
-    //        }
+    handleLogin = async () => {
+        console.log('username:' ,this.state.username)
+        console.log('password:' ,this.state.password)
+        console.log('allstate:' ,this.state)
+        this.setState({
+            errMessage: '',
+        })
+        try {
+           let data =  await handleLoginApi(this.state.username, this.state.password);
+           if(data && data.errCode !==0) {
+               this.setState({
+                   errMessage: data.message
+               })
+           }
+           if(data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user) 
+               console.log('login succeed');
+           }
 
-    //     }catch(error) {
-    //         if(error.response) {
-    //             if(error.response.data){
-    //                 this.setState({
-    //                     errMessage: error.response.data.message
-    //                 })
-    //             }
-    //         }
-    //     } 
-    // }
+        }catch(error) {
+            if(error.response) {
+                if(error.response.data){
+                    this.setState({
+                        errMessage: error.response.data.message
+                    })
+                }
+            }
+        } 
+    }
 
     handleShowHidePassword = () => {
         this.setState({
             isShowPassword: !this.state.isShowPassword
         })
+    }
+
+    HandleManageDetail = (station) => {
+        console.log("detail is: ", station );
+        this.props.history.push(`/system/user-redux`)
+        return <Redirect to = "/user" push={true} />
+    }
+
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            this.handleLogin();
+        }
     }
 
     render() {
@@ -90,7 +107,8 @@ class Login extends Component {
                                 className = "form-control" 
                                 type = {this.state.isShowPassword ? 'text' : 'password'}
                                 placeholder = "Input your password"
-                                onChange = {(event) => {this.handleOnChangePassword(event)}}/>
+                                onChange = {(event) => {this.handleOnChangePassword(event)}}
+                                oneKeyDown = {(event) => this.handleKeyDown(event)}/>
                                 <span
                                 onClick = {() => {this.handleShowHidePassword()}}>
                                     <i class = {this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
@@ -104,7 +122,8 @@ class Login extends Component {
                         </div>
                         <div className = "col-12">
                             <button className = "login-btn"
-                           /* onClick = {() => {this.handleLogin()}} */
+                            onClick = {() => {this.handleLogin()}}
+                            // onClick ={(item) => this.HandleManageDetail(item)}
                             >
                                 Login</button>
                         </div>

@@ -4,6 +4,7 @@ import HomeHeader from './HomeHeader';
 import Travel from './Section/Travel';
 import Station from './Section/Station';
 import Services from './Section/Services';
+import About from './Section/About';
 import HomeFooter from './HomeFooter';
 import "./Homepage.scss";
 import Slider from 'react-slick';
@@ -27,6 +28,7 @@ class HomePage extends Component {
                <Travel/>
                <Station settings = {settings} />
                <Services />
+               <About />
                <HomeFooter />
            </div>
         );

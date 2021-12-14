@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import {getAllCodeService} from "../../../services/userService";
-
+import * as actions from "../../../store/actions";
 
 class UserRedux extends Component {
 
@@ -13,7 +13,16 @@ class UserRedux extends Component {
         }
     }
 
-    async componentDidMount() {
+    async componentDidMount(prevProps, prevState, snapshot ) {
+        // render => didupdate
+        // present (this) and past (previous)
+        //  [] [3]
+        if (prevProps.genderRedux !==  this.props.genderRedux) {
+            this.setState({
+                genderArr: this.props.genderRedux 
+            })
+        }
+        
         try {
             let res = await getAllCodeService('gender');
             if(res && res.errCode ===0) {
@@ -31,6 +40,7 @@ class UserRedux extends Component {
 
     render() {
         let genders = this.state.genderArr;
+        console.log('check props from redux', this.props.genderRedux)
         return (
             <div className = "user-redux-container">
                 <div className = 'title'>\
@@ -43,31 +53,31 @@ class UserRedux extends Component {
                         </div><form>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" className="form-control" id="inputEmail4" placeholder="Email"/>
+                                <label for="inputEmail">Email</label>
+                                <input type="email" className="form-control" id="inputEmai" placeholder="Email"/>
                                 </div>
                                 <div className="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" className="form-control" id="inputPassword4" placeholder="Password"/>
+                                <label for="inputPassword">Password</label>
+                                <input type="password" className="form-control" id="inputPassword" placeholder="Password"/>
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label for="inputAddress">Address</label>
-                                <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
+                                <input type="text" className="form-control" id="inputAddress" placeholder="IU International"/>
                             </div>
                             <div className="form-group">
-                                <label for="inputAddress2">First name</label>
-                                <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+                                <label for="inputFirstName">First name</label>
+                                <input type="text" className="form-control" id="inputFirstName" placeholder="Nguyen"/>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
-                                <label for="inputCity">Last Name</label>
-                                <input type="text" className="form-control" id="inputCity"/>
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" className="form-control" id="inputLastName"/>
                                 </div>
                                 <div className="form-group col-md-4">
                                 <label for="inputState">Gender</label>
                                 {genders && genders.length > 0 && 
-                                genders.map((item,idenx) => {
+                                genders.map((item,idex) => {
                                     return (
                                         <select id="inputState" className="form-control">
                                     <option selected>Choose...</option>
@@ -98,11 +108,15 @@ class UserRedux extends Component {
 
 const mapStateToProps = state => {
     return {
+        genderRedux: state.admin.genders,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getGenderStart: () => dispatch(actions.fetchGenderStart())
+        // processLogout: () => dispatch(actions.processLogout()),
+
     };
 };
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
 import { adminMenu } from './menuApp';
+import System from '../../routes/System';
 import './Header.scss';
 
 class Header extends Component {

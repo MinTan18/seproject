@@ -12,14 +12,16 @@ import { path } from '../utils'
 
 import Home from '../routes/Home';
 import Login from './Auth/Login';
-import Header from './Header/Header';
 import StationDetail from '../components/Client/Station/StationDetail';
+import StationDetail1 from '../components/Client/Station/StationDetail1';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage.js'
 import System from '../routes/System';
 
 import CustomScrollbars from '../components/CustomScrollbars';
+import ComfirmModal from '../components/ConfirmModal';
+import UserRedux from './System/Admin/UserRedux';
 
 class App extends Component {
 
@@ -55,7 +57,9 @@ class App extends Component {
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                 <Route path={path.DETAIL_STATION} component = {StationDetail} />
+                                <Route path={path.DETAIL_STATION1} component = {StationDetail1} />
                                 <Route path={path.HOMEPAGE} component={HomePage} />
+                                <Route path={path.USER_MANAGE} component={UserRedux} />
 
                             </Switch>
                             </CustomScrollbars>

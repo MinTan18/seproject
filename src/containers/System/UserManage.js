@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-// import {getAllUsers} from '../../services/userService';
+import {getAllUsers} from '../../services/userService';
 class UserManage extends Component {
 
     constructor(props) {
